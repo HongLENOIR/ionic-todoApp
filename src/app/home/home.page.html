@@ -1,20 +1,30 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Mes tâches
     </ion-title>
+    <ion-button slot="end">
+      <span class="todoNb">
+        {{ tasks.length }}
+      </span>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true">  <!-- comme class="container"-->
+<!--  <ion-header collapse="condense">-->
+<!--    <ion-toolbar>-->
+<!--      <ion-title size="large"></ion-title>-->
+<!--    </ion-toolbar>-->
+<!--  </ion-header>-->
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+      <!-- Checkboxes in a List -->
+    <ion-list> <!--ul-->
+      <ion-item *ngFor="let task of tasks">
+        <ion-label [class.done]="task.status"> <!--[class] c'est une condition, vrais ou pas-->
+          {{task.id + " " + task.title}}</ion-label>
+        <ion-checkbox color="danger" slot="start" [(ngModel)]="task.status"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+
+ </ion-content>
